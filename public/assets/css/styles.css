@@ -1,0 +1,31 @@
+body {
+  font-family: Actor, sans-serif;
+}
+
+.ui-btn {
+  border: 1px solid #779bff !important;
+  color: #779bff !important;
+}
+
+#header {
+  height: 100vh;
+}
+th {
+  text-align: center !important;
+}
+td {
+  color: black !important;
+}
+select {
+  color: black !important;
+}
+nav ul li {
+  color: white !important;
+}
+h1 {
+  font-size: 30pt !important;
+}
+
+h2 {
+  font-size: 20pt !important;
+}

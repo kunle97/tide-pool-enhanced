@@ -1,43 +1,34 @@
 import { useState, useEffect } from 'react';
-
-const API_URL = 'https://www.gmrt.org/services/GmrtCruises.php';
-
-type Cruise = {
-  entry_id: string;
-  chief: string;
-  created: string;
-  total_area: string;
-  url: string;
-};
+import { Cruise } from '@/types';
+import { calculateTotalArea, makeid } from '@/helpers/util';
+import { API_URL } from '@/constants';
+import { apiClient } from '@/api/apiClient';
+import Navbar from './Navbar';
 
 function Table() {
   let [cruises, setCruises] = useState<Cruise[]>([]);
-  let [totalArea, setTotalArea] = useState(0);
+  let [totalArea, setTotalArea] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
   const [sortOrder, setSortOrder] = useState('desc');
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(10);
 
   async function fetchCruises() {
-    const response = await fetch(API_URL);
-    const json = await response.json();
-    setCruises(json);
+    try {
+      const data = await apiClient(API_URL, { method: 'GET' });
+      setCruises(data);
+    } catch (error) {
+      // Handle the error
+      console.error(error);
+    }
   }
 
   useEffect(() => {
     fetchCruises();
   }, []);
 
-  const calculateTotalArea = () => {
-    const areaSum = cruises.reduce(
-      (sum, cruise) => sum + Number(Number.parseInt(cruise.total_area)),
-      0,
-    );
-    setTotalArea(areaSum);
-  };
-
   useEffect(() => {
-    calculateTotalArea();
+    setTotalArea(calculateTotalArea(cruises).toString());
   }, [cruises]);
 
   const handleSearch = (event: any) => {
@@ -57,7 +48,7 @@ function Table() {
     setCurrentPage(pageNumber);
   };
 
-  const handleResultsPerPageChange = (event) => {
+  const handleResultsPerPageChange = (event: any) => {
     setItemsPerPage(event.target.value);
   };
 
@@ -84,9 +75,10 @@ function Table() {
 
   return (
     <div className=''>
-      <div className='container mx-auto p-4'>
-        <h1 className='text-xl'>GMRT Sonar Surveys/Cruises</h1>
-        <p>Total Area of Visible Cruises: {totalArea}</p>
+    <Navbar />
+      <div className='container mx-auto p-4 mt-5'>
+        <h1 className='text-xl'>GMRT Sonar Surveys/Filter</h1>
+        <p>Aggregate Total Area of Visible Cruises: {totalArea}</p>
       </div>
       <div className='container mx-auto p-4'>
         <div className='overflow-auto p-1'>
@@ -101,6 +93,7 @@ function Table() {
             className='float-right p-2 mb-4  rounded-lg shadow-sm border-gray-500 focus:outline-none focus:ring focus:border-blue-300'
             value={itemsPerPage}
             onChange={handleResultsPerPageChange}
+            aria-label='Items per page'
           >
             <option value={10} disabled>
               Results Per Page
@@ -126,7 +119,7 @@ function Table() {
           </thead>
           <tbody className='divide-y divide-gray-200'>
             {currentItems.map((item) => (
-              <tr key={item.entry_id} className='hover:bg-gray-100'>
+              <tr key={item.entry_id + '_' + makeid(10)} className='hover:bg-gray-100'>
                 <td className='py-2 px-4 text-center'>
                   <a className='text-blue-500' target='_blank' href={item.url}>
                     {item.entry_id}
