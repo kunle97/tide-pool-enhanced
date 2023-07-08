@@ -85,7 +85,7 @@ function Table() {
   return (
     <div className=''>
       <div className='container mx-auto p-4'>
-        <h1>GMRT Sonar Surveys/Cruises</h1>
+        <h1 className='text-xl'>GMRT Sonar Surveys/Cruises</h1>
         <p>Total Area of Visible Cruises: {totalArea}</p>
       </div>
       <div className='container mx-auto p-4'>
@@ -127,10 +127,14 @@ function Table() {
           <tbody className='divide-y divide-gray-200'>
             {currentItems.map((item) => (
               <tr key={item.entry_id} className='hover:bg-gray-100'>
-                <td className='py-2 px-4'>{item.entry_id}</td>
-                <td className='py-2 px-4'>{item.chief}</td>
-                <td className='py-2 px-4'>{item.created}</td>
-                <td className='py-2 px-4'>{item.total_area}</td>
+                <td className='py-2 px-4 text-center'>
+                  <a className='text-blue-500' target='_blank' href={item.url}>
+                    {item.entry_id}
+                  </a>
+                </td>
+                <td className='py-2 px-4 text-center'>{item.chief}</td>
+                <td className='py-2 px-4 text-center'>{item.created}</td>
+                <td className='py-2 px-4 text-center'>{item.total_area}</td>
               </tr>
             ))}
           </tbody>
