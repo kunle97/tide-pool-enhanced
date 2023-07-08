@@ -12,7 +12,6 @@ import {
 
 const API_URL = 'https://www.gmrt.org/services/GmrtCruises.php';
 
-
 type Cruise = {
   entry_id: string;
   chief: string;
@@ -24,7 +23,7 @@ function Table() {
   let [cruises, setCruises] = useState<Cruise[]>([]);
   let [totalArea, setTotalArea] = useState(0);
   const [searchTerm, setSearchTerm] = useState('');
-  const rerender = React.useReducer(() => ({}), {})[1];
+  const [sortOrder, setSortOrder] = useState('');
 
   async function fetchCruises() {
     const response = await fetch(API_URL);
@@ -33,14 +32,6 @@ function Table() {
     setCruises(json);
     console.log('fetched cruises', cruises);
   }
-
-  useEffect(() => {
-    fetchCruises();
-  }, []);
-  useEffect(() => {
-    calculateTotalArea();
-  }, [cruises]);
-
   const calculateTotalArea = () => {
     const areaSum = cruises.reduce(
       (sum, cruise) => sum + Number(Number.parseInt(cruise.total_area)),
@@ -49,18 +40,33 @@ function Table() {
     setTotalArea(areaSum);
   };
 
-  const data = [
-    { entry_id: 1, chief: 'John Doe', created: '2023-01-01', total_area: 100 },
-    { entry_id: 2, chief: 'Jane Smith', created: '2023-01-02', total_area: 150 },
-    { entry_id: 3, chief: 'Alice Johnson', created: '2023-01-03', total_area: 200 },
-    // Add more data as needed
-  ];
+  useEffect(() => {
+    fetchCruises();
+    calculateTotalArea();
+  }, [cruises]);
 
   const handleSearch = (event: any) => {
     setSearchTerm(event.target.value);
   };
 
-  const filteredData = cruises.filter(
+  const handleSort = () => {
+    if (sortOrder === 'asc') {
+      setSortOrder('desc');
+    } else {
+      setSortOrder('asc');
+    }
+  };
+
+  const sortedData = cruises.sort((a, b) => {
+    if (sortOrder === 'asc') {
+      return new Date(a.created) - new Date(b.created);
+    } else if (sortOrder === 'desc') {
+      return new Date(b.created) - new Date(a.created);
+    }
+    return 0;
+  });
+
+  const filteredData = sortedData.filter(
     (item) =>
       (item.entry_id !== null && item.entry_id.toString().includes(searchTerm)) ||
       (item.chief !== null && item.chief.toLowerCase().includes(searchTerm.toLowerCase())) ||
@@ -71,15 +77,6 @@ function Table() {
     <div className='container'>
       <h1>GMRT Sonar Surveys/Cruises</h1>
       <p>Total Area of Visible Cruises: {totalArea}</p>
-      {/* <BootstrapTable
-        keyField="entry_id"
-        data={cruises}
-        columns={columns}
-        // filter={filterFactory()}
-        striped
-        hover
-        bootstrap4
-      /> */}
       <div className='container mx-auto p-4'>
         <input
           type='text'
@@ -94,7 +91,9 @@ function Table() {
             <tr>
               <th className='py-2 px-4 text-blue-500'>Entry ID</th>
               <th className='py-2 px-4 text-blue-500'>Chief</th>
-              <th className='py-2 px-4 text-blue-500'>Created</th>
+              <th className='py-2 px-4 cursor-pointer' onClick={handleSort}>
+                Created {sortOrder === 'asc' ? '▲' : '▼'}
+              </th>
               <th className='py-2 px-4 text-blue-500'>Total Area</th>
             </tr>
           </thead>
