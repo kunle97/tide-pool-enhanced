@@ -13,7 +13,6 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
     <Provider store={store}>
       <BrowserRouter>
         <MainContext.Provider value={{}}>
-          <h1>Tide poolz go here</h1>
           <Table />
         </MainContext.Provider>
       </BrowserRouter>

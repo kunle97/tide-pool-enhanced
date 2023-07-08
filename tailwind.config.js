@@ -6,7 +6,6 @@ module.exports = {
     fontFamily: {
       sans: ['Roboto'],
     },
-    colors: {},
     extend: {},
   },
   plugins: [],
