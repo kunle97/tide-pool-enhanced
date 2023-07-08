@@ -14,7 +14,7 @@ function Table() {
   let [cruises, setCruises] = useState<Cruise[]>([]);
   let [totalArea, setTotalArea] = useState(0);
   const [searchTerm, setSearchTerm] = useState('');
-  const [sortOrder, setSortOrder] = useState('');
+  const [sortOrder, setSortOrder] = useState('desc');
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(10);
 
@@ -57,8 +57,8 @@ function Table() {
     setCurrentPage(pageNumber);
   };
 
-  const handleResultsPerPageChange = (resultCount: number) => {
-    setItemsPerPage(resultCount);
+  const handleResultsPerPageChange = (event) => {
+    setItemsPerPage(event.target.value);
   };
 
   const filteredData = cruises.filter(
@@ -89,23 +89,28 @@ function Table() {
         <p>Total Area of Visible Cruises: {totalArea}</p>
       </div>
       <div className='container mx-auto p-4'>
-        <div>
+        <div className='overflow-auto p-1'>
           <input
             type='text'
             placeholder='Search...'
             value={searchTerm}
             onChange={handleSearch}
-            className='w-full p-2 mb-4 rounded-lg shadow-sm border-gray-300 focus:outline-none focus:ring focus:border-blue-300'
+            className='float-left w-[250px] p-2 mb-4 rounded-lg shadow-sm border-gray-500 focus:outline-none focus:ring focus:border-blue-300'
           />
-          {/* <div>
-            <p>Results per Page</p>
-            <select onChange={() => handleResultsPerPageChange(this.state.value)}>
-              <option value={10}>10</option>
-              <option value={25}>25</option>
-              <option value={50}>50</option>
-              <option value={100}>100</option>
-            </select>
-          </div> */}
+          <select
+            className='float-right p-2 mb-4  rounded-lg shadow-sm border-gray-500 focus:outline-none focus:ring focus:border-blue-300'
+            value={itemsPerPage}
+            onChange={handleResultsPerPageChange}
+          >
+            <option value={10} disabled>
+              Results Per Page
+            </option>
+            <option value={10}>10</option>
+            <option value={15}>15</option>
+            <option value={25}>25</option>
+            <option value={50}>50</option>
+            <option value={100}>100</option>
+          </select>
         </div>
 
         <table className='w-full bg-white divide-y divide-gray-200 shadow-sm rounded-lg overflow-hidden'>
@@ -114,7 +119,7 @@ function Table() {
               <th className='py-2 px-4'>Entry ID</th>
               <th className='py-2 px-4'>Chief</th>
               <th className='py-2 px-4 cursor-pointer' onClick={handleSort}>
-                Created {sortOrder === 'asc' ? '▲' : '▼'}
+                Created <span className='text-xs'>{sortOrder === 'asc' ? '▲' : '▼'}</span>
               </th>
               <th className='py-2 px-4'>Total Area</th>
             </tr>
@@ -145,6 +150,7 @@ function Table() {
             </button>
           ))}
         </div>
+        <p className='mt-3'>* Scroll horiontally on buttons to see more pages</p>
       </div>
     </div>
   );
