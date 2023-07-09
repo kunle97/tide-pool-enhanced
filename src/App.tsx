@@ -4,9 +4,13 @@ import { Provider } from 'react-redux';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { store } from '@/store';
 import '@/index.css';
-import Table from './components/Table';
 import Home from './components/Home';
-import Navbar from './components/Navbar';
+import Dashboard from './components/Dashboard/Dashboard';
+import MergedCruises from './components/Dashboard/Cruises/MergedCruises';
+import RejectedCruises from './components/Dashboard/Cruises/RejectedCruises';
+import UnderReviewCruises from './components/Dashboard/Cruises/UnderReviewCruises';
+import Login from './components/Dashboard/Login';
+import Register from './components/Dashboard/Register';
 
 const router = createBrowserRouter([
   {
@@ -18,12 +22,28 @@ const router = createBrowserRouter([
     element: <Home />,
   },
   {
-    path: '/cruises',
-    element: <Table />,
+    path: '/dashboard',
+    element: <Dashboard />,
   },
   {
-    path: '/nav',
-    element: <Navbar />,
+    path: '/login',
+    element: <Login />,
+  },
+  {
+    path: '/register',
+    element: <Register />,
+  },
+  {
+    path: '/merged-cruises',
+    element: <MergedCruises />,
+  },
+  {
+    path: '/rejected-cruises',
+    element: <RejectedCruises />,
+  },
+  {
+    path: '/under-review-cruises',
+    element: <UnderReviewCruises />,
   },
 ]);
 

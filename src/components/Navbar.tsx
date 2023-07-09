@@ -34,24 +34,24 @@ const Navbar = () => {
         </button>
         <div className={`${collapse && 'collapse'} navbar-collapse visible`} id='navbarResponsive'>
           <ul className='navbar-nav ms-auto'>
-            <li className='nav-item nav-link'>
+            <li className='nav-item nav-link mt-2'>
               <a className='nav-link active' href='/home#header'>
                 Home
               </a>
             </li>
-            <li className='nav-item nav-link'>
+            <li className='nav-item nav-link mt-2'>
               <a className='nav-link' href='#about'>
                 About
               </a>
             </li>
-            <li className='nav-item nav-link'>
+            <li className='nav-item nav-link mt-2'>
               <a className='nav-link' href='#download'>
                 Download
               </a>
             </li>
-            <li className='nav-item nav-link'>
+            <li className='nav-item nav-link mt-2'>
               <a className='nav-link' href='#contact'>
-                contact
+                Contact
               </a>
             </li>
             <li className='nav-item nav-link'>
@@ -59,8 +59,11 @@ const Navbar = () => {
               <a className='nav-link' href='/cruises'>
                 Survey Data
               </a> */}
-              <a className='nav-link' href='/cruises'>
-                <button className='btn btn-primary btn-lg btn-default mx-1 text-sm' type='button'>
+              <a className='nav-link' href='/login'>
+                <button
+                  className='btn btn-primary btn-lg btn-default mx-1 text-sm border-0 bg-dashboardGreen text-white'
+                  type='button'
+                >
                   Login
                 </button>
               </a>

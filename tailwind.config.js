@@ -9,6 +9,8 @@ module.exports = {
     colors: {
       uiGreen: '#37bd8c',
       uiBtnGreen: '#42dca3',
+      dashboardGreen: '#3aaf5c',
+      dashboardGrey: '#2c3a4a',
     },
     extend: {},
   },

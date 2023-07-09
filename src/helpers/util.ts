@@ -1,5 +1,4 @@
 import { Cruise } from "@/types";
-import BigNumber from 'bignumber.js';
 
 
 export const calculateTotalArea = (cruises:Cruise[]) => {// Returns the sum of the total areas of each cruise 
@@ -10,6 +9,9 @@ export const calculateTotalArea = (cruises:Cruise[]) => {// Returns the sum of t
     });
     return areaSum;
   };
+export function numberWithCommas(x:number) { //Adds commas to large numbers
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
 
 export function makeid(length:number) {// Used to help make unique keys without using index in map functions
     let result = '';

@@ -1,0 +1,34 @@
+.card {
+  background: #364658;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23) !important;
+  border: none;
+}
+
+.card-header {
+  background: #3aaf5c;
+  color: white !important;
+  border-bottom: none;
+}
+
+.card-header-text {
+  color: white !important;
+}
+
+.card-text {
+  color: white;
+}
+
+#content {
+  background: #2c3a4a;
+}
+
+.sticky-footer {
+  background: #2c3a4a !important;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23) !important;
+}
+
+.ui-btn {
+  background: #3aaf5c;
+  border: none;
+}
+
