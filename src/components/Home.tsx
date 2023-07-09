@@ -6,10 +6,7 @@ const Home = () => {
       <Navbar />
       <div>
         <div id='header' className='parallax'>
-          <div
-            className='container d-flex justify-content-center align-items-center parallax-content my-auto'
-            style={{ height: '100vh' }}
-          >
+          <div className='container custom-hero d-flex justify-content-center align-items-center parallax-content my-auto container-reset'>
             <div className='col-12 col-md-10 col-lg-8 d-flex justify-content-center flex-column'>
               <h1 className='brand-heading'>Tide Pool</h1>
               <p className='intro-text my-2'>
@@ -17,10 +14,10 @@ const Home = () => {
                 more about our new and improve AI powered survey tool.
               </p>
               <a
-                className='btn btn-link btn-circle mx-auto'
+                className='btn btn-link btn-circle mx-auto w-14'
                 role='button'
                 href='#about'
-                style={{ width: '55px' }}
+                title='To about section'
               >
                 <i className='fa fa-angle-double-down animated' />
               </a>
@@ -37,18 +34,16 @@ const Home = () => {
               <div className='col-lg-8 mx-auto'>
                 <h2>Tide Pool</h2>
                 <p>
-                  Grayscale is a free Bootstrap theme. It can be yours right now, simply download
-                  the template on&nbsp;<a href='#'>the preview page</a>. The theme is open source,
-                  and you can use it for any purpose, personal or commercial.
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lobortis orci
+                  blandit nisl vestibulum, ut ultricies massa pulvinar. Curabitur auctor quam nibh,
+                  a euismod lacus tincidunt ut. Aliquam ac urna neque. Donec pellentesque vel ex ac
+                  pharetra. Sed porta dolor ut velit rutrum vestibulum. Cras molestie lorem nec ante
+                  ullamcorper lobortis. Nullam accumsan urna a metus ornare lacinia. Suspendisse
+                  potenti. Morbi scelerisque, eros eget sagittis tempus, turpis arcu elementum mi,
+                  eu tristique metus justo ac velit. Mauris pellentesque ante sapien, egestas semper
+                  augue fringilla sed. Morbi eget porttitor velit.
                 </p>
-                <p>
-                  This theme features stock photos by&nbsp;<a href='#'>Gratisography</a>&nbsp;along
-                  with a custom Google Maps skin courtesy of&nbsp;<a href='#'>Snazzy Maps</a>.
-                </p>
-                <p>
-                  Grayscale includes full HTML, CSS, and custom JavaScript files along with SASS and
-                  LESS files for easy customization!
-                </p>
+
                 <a href='/cruises'>
                   <button className='btn btn-primary btn-lg btn-default mx-3 my-4' type='button'>
                     Launch App
@@ -70,13 +65,13 @@ const Home = () => {
           <div className='container'>
             <div className='col-lg-8 mx-auto'>
               <h2>Desktop app</h2>
-              <p>You can download the Tide Pool desktop app for free.</p>
-              <button className='btn btn-primary btn-lg mx-3 ui-btn' type='button'>
-                &nbsp;download For Windows&nbsp;
+              <p className='my-2'>You can download the Tide Pool desktop app for free.</p>
+              <button className='btn btn-primary btn-lg btn-default mx-3' type='button'>
+                &nbsp;Download For Windows&nbsp;
                 <i className='fab fa-windows' />
               </button>
               <button className='btn btn-primary btn-lg btn-default mx-3' type='button'>
-                &nbsp;download For Mac&nbsp;
+                &nbsp;Download For Mac&nbsp;
                 <i className='fab fa-apple' />
               </button>
             </div>
@@ -87,7 +82,7 @@ const Home = () => {
             <div className='row'>
               <div className='col-lg-8 mx-auto'>
                 <h2>Contact us</h2>
-                <p>
+                <p className='my-3'>
                   Feel free to leave us a comment on the
                   <a href='#'>&nbsp;Grayscale template overview page</a>&nbsp;to give some feedback
                   about this theme!

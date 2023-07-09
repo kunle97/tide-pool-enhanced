@@ -14,11 +14,11 @@ function Table() {
   const [itemsPerPage, setItemsPerPage] = useState(10);
 
   async function fetchCruises() {
+    // Retrieve cruise data from GMRT API using the apiClient
     try {
       const data = await apiClient(API_URL, { method: 'GET' });
       setCruises(data);
     } catch (error) {
-      // Handle the error
       console.error(error);
     }
   }
@@ -74,8 +74,7 @@ function Table() {
   const currentItems = sortedData.slice(indexOfFirstItem, indexOfLastItem);
 
   return (
-    <div className=''>
-    <Navbar />
+    <div>
       <div className='container mx-auto p-4 mt-5'>
         <h1 className='text-xl'>GMRT Sonar Surveys/Filter</h1>
         <p>Aggregate Total Area of Visible Cruises: {totalArea}</p>
@@ -87,7 +86,7 @@ function Table() {
             placeholder='Search...'
             value={searchTerm}
             onChange={handleSearch}
-            className='float-left w-[250px] p-2 mb-4 rounded-lg shadow-sm border-gray-500 focus:outline-none focus:ring focus:border-blue-300'
+            className='float-left w-[250px] p-2 mb-4 rounded-lg shadow-sm border-gray-500 focus:outline-none focus:ring focus:border-blue-300 text-black'
           />
           <select
             className='float-right p-2 mb-4  rounded-lg shadow-sm border-gray-500 focus:outline-none focus:ring focus:border-blue-300'
@@ -107,7 +106,7 @@ function Table() {
         </div>
 
         <table className='w-full bg-white divide-y divide-gray-200 shadow-sm rounded-lg overflow-hidden'>
-          <thead className='bg-blue-500 text-white'>
+          <thead className='bg-uiGreen text-white'>
             <tr>
               <th className='py-2 px-4'>Entry ID</th>
               <th className='py-2 px-4'>Chief</th>
@@ -121,7 +120,7 @@ function Table() {
             {currentItems.map((item) => (
               <tr key={item.entry_id + '_' + makeid(10)} className='hover:bg-gray-100'>
                 <td className='py-2 px-4 text-center'>
-                  <a className='text-blue-500' target='_blank' href={item.url}>
+                  <a className='text-uiGreen' target='_blank' href={item.url}>
                     {item.entry_id}
                   </a>
                 </td>
@@ -139,7 +138,7 @@ function Table() {
             <button
               key={pageNumber}
               className={`mx-1 px-3 py-1 rounded-lg focus:outline-none ${
-                pageNumber === currentPage ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-600'
+                pageNumber === currentPage ? 'bg-uiGreen text-white' : 'bg-gray-200 text-gray-600'
               }`}
               onClick={() => handlePageChange(pageNumber)}
             >

@@ -6,7 +6,12 @@ body {
   border: 1px solid #779bff !important;
   color: #779bff !important;
 }
-
+.container-reset {
+  padding: 0 !important;
+}
+.custom-hero {
+  height: 100vh !important;
+}
 #header {
   height: 100vh;
 }

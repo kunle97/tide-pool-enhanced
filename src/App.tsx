@@ -1,11 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
-import { createBrowserRouter, BrowserRouter, Route, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { store } from '@/store';
 import '@/index.css';
 import Table from './components/Table';
 import Home from './components/Home';
+import Navbar from './components/Navbar';
 
 const router = createBrowserRouter([
   {
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
   {
     path: '/cruises',
     element: <Table />,
+  },
+  {
+    path: '/nav',
+    element: <Navbar />,
   },
 ]);
 

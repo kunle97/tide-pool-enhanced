@@ -6,6 +6,10 @@ module.exports = {
     fontFamily: {
       sans: ['Roboto'],
     },
+    colors: {
+      uiGreen: '#37bd8c',
+      uiBtnGreen: '#42dca3',
+    },
     extend: {},
   },
   plugins: [],
