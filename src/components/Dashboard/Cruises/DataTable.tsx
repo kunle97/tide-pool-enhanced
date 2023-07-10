@@ -45,6 +45,7 @@ const DataTable = (props: any) => {
   };
 
   const handleResultsPerPageChange = (event: any) => {
+    setCurrentPage(1);
     setItemsPerPage(event.target.value);
   };
 
