@@ -11,6 +11,7 @@ module.exports = {
       uiBtnGreen: '#42dca3',
       dashboardGreen: '#3aaf5c',
       dashboardGrey: '#2c3a4a',
+      error: '#dc2626'
     },
     extend: {},
   },

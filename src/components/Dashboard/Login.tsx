@@ -1,6 +1,53 @@
-import React from 'react';
+import { useState } from 'react';
+import { post } from '@/api/apiClient';
+import { useDispatch } from 'react-redux';
+import { login } from '@/features/userSlice';
+import { useNavigate } from 'react-router';
 
 const Login = () => {
+  const [email, setEmail] = useState('test@email.com');
+  const [password, setPassword] = useState('password');
+  const [errMsg, setErrMsg] = useState<string>();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();
+    try {
+      const data = await post(
+        '/login',
+        JSON.stringify({
+          email: email,
+          password: password,
+        }),
+        {
+          method: 'POST',
+        },
+      );
+      console.log('Handle Submit data', data);
+      if (data.statusCode === 200 && email !== '' && password !== '') {
+        //Check for response code before dispatch
+        dispatch(
+          login({
+            name: 'Jane Doe',
+            email: email,
+            password: password,
+            isAuthenticated: true,
+            accessToken: data.accessToken,
+          }),
+        );
+        setErrMsg('');
+        //Redirect to dashboard
+        navigate('/dashboard');
+      } else {
+        setErrMsg('Incorrect email or password');
+      }
+    } catch (error) {
+      console.error(error);
+      setErrMsg('Error logging you in');
+    }
+  };
+
   return (
     <div className='container-fluid bg-dashboardGrey  h-screen'>
       <div className='row justify-content-center'>
@@ -11,19 +58,21 @@ const Login = () => {
                 <div className='col-lg-12'>
                   <div className='p-5'>
                     <div className='text-center'>
-                      <h4 className='text-light mb-4' style={{ color: 'rgb(255,255,255)' }}>
+                      <h3 className='text-light mb-4' style={{ color: 'rgb(255,255,255)' }}>
                         Login
-                      </h4>
+                      </h3>
                     </div>
-                    <form className='user'>
+                    <form className='user' onSubmit={(e) => handleSubmit(e)}>
                       <div className='mb-3'>
                         <input
                           className='form-control form-control-user'
-                          type='email'
-                          id='exampleInputEmail'
-                          aria-describedby='emailHelp'
-                          placeholder='Enter Email Address...'
+                          type='text'
+                          id='exampleInputUsername'
+                          aria-describedby='usernameHelp'
+                          placeholder='Email'
                           name='email'
+                          value={email}
+                          onChange={(e) => setEmail(e.target.value)}
                         />
                       </div>
                       <div className='mb-3'>
@@ -33,6 +82,8 @@ const Login = () => {
                           id='exampleInputPassword'
                           placeholder='Password'
                           name='password'
+                          value={password}
+                          onChange={(e) => setPassword(e.target.value)}
                         />
                       </div>
                       <div className='mb-3'>
@@ -52,6 +103,9 @@ const Login = () => {
                           </div>
                         </div>
                       </div>
+
+                      {errMsg && <p className='mb-2 text-error w-full text-center'>{errMsg}</p>}
+
                       <button
                         className='btn btn-primary d-block btn-user w-100 ui-btn bg-dashboardGreen border-0 text-white'
                         type='submit'

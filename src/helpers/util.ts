@@ -13,7 +13,7 @@ export function numberWithCommas(x:number) { //Adds commas to large numbers
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
-export function makeid(length:number) {// Used to help make unique keys without using index in map functions
+export function makeid(length:number) {// Used to help make unique keys like access tokens for login
     let result = '';
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     const charactersLength = characters.length;

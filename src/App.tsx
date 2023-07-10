@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { store } from '@/store';
+import { createBrowserRouter, Routes, Route, BrowserRouter } from 'react-router-dom';
+import { store } from '@/app/store';
 import '@/index.css';
 import Home from './components/Home';
 import Dashboard from './components/Dashboard/Dashboard';
@@ -11,50 +11,66 @@ import RejectedCruises from './components/Dashboard/Cruises/RejectedCruises';
 import UnderReviewCruises from './components/Dashboard/Cruises/UnderReviewCruises';
 import Login from './components/Dashboard/Login';
 import Register from './components/Dashboard/Register';
+import { worker } from './api/mocks/browser';
+import RequireAuth from './api/auth/RequireAuth';
+import PageNotFound from './components/Errors/PageNotFound';
+import { PersistGate } from 'redux-persist/integration/react';
+import persistStore from 'redux-persist/es/persistStore';
 
-const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <Home />,
-  },
-  {
-    path: '/home',
-    element: <Home />,
-  },
-  {
-    path: '/dashboard',
-    element: <Dashboard />,
-  },
-  {
-    path: '/login',
-    element: <Login />,
-  },
-  {
-    path: '/register',
-    element: <Register />,
-  },
-  {
-    path: '/merged-cruises',
-    element: <MergedCruises />,
-  },
-  {
-    path: '/rejected-cruises',
-    element: <RejectedCruises />,
-  },
-  {
-    path: '/under-review-cruises',
-    element: <UnderReviewCruises />,
-  },
-]);
+let persistor = persistStore(store);
+
+if (process.env.NODE_ENV === 'development') {
+  worker.start();
+}
 
 const MainContext = React.createContext({});
 
-ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-  <React.StrictMode>
+const PersistenceApp = () => {
+  return (
     <Provider store={store}>
       <MainContext.Provider value={{}}>
-        <RouterProvider router={router} />
+        <PersistGate persistor={persistor}>
+          <BrowserRouter>
+            <Routes>
+              <Route path='*' element={<PageNotFound />} />
+              <Route path='/' element={<Home />} />
+              <Route path='/login' element={<Login />} />
+              <Route path='/register' element={<Register />} />
+              <Route element={<RequireAuth />}>
+                <Route path='/dashboard' element={<Dashboard />} />
+                <Route path='/merged-cruises' element={<MergedCruises />} />
+                <Route path='/rejected-cruises' element={<RejectedCruises />} />
+                <Route path='/under-review-cruises' element={<UnderReviewCruises />} />
+              </Route>
+            </Routes>
+          </BrowserRouter>
+        </PersistGate>
       </MainContext.Provider>
     </Provider>
-  </React.StrictMode>,
-);
+  );
+};
+const ReduxApp = () => {
+  return (
+    <Provider store={store}>
+      <MainContext.Provider value={{}}>
+        <BrowserRouter>
+          <Routes>
+            <Route path='*' element={<PageNotFound />} />
+            <Route path='/' element={<Home />} />
+            <Route path='/login' element={<Login />} />
+            <Route path='/register' element={<Register />} />
+            <Route path='/dashboard' element={<Dashboard />} />
+            <Route path='/merged-cruises' element={<MergedCruises />} />
+            <Route path='/rejected-cruises' element={<RejectedCruises />} />
+            <Route path='/under-review-cruises' element={<UnderReviewCruises />} />
+          </Routes>
+        </BrowserRouter>
+      </MainContext.Provider>
+    </Provider>
+  );
+};
+
+const isUsingPersistence = false;
+let app = isUsingPersistence ? <PersistenceApp /> : <ReduxApp />; //Sets Conditional to enable or disable redux-persistence since persitence is slower to load pages
+
+ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(app);

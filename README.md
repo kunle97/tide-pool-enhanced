@@ -21,7 +21,13 @@ The project requires Node 18 to be installed on your local machine, refer to npm
 npm install
 ```
 
-2. Start the Dev Server
+2. Initialize the Mock Service Worker to enable login feature
+
+```sh
+npx msw init public/ --save
+```
+
+3. Start the Dev Server
 
 ```sh
 npm run dev
