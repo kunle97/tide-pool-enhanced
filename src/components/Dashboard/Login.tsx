@@ -3,6 +3,7 @@ import { post } from '@/api/apiClient';
 import { useDispatch } from 'react-redux';
 import { login } from '@/features/userSlice';
 import { useNavigate } from 'react-router';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
   const [email, setEmail] = useState('test@email.com');
@@ -24,7 +25,6 @@ const Login = () => {
           method: 'POST',
         },
       );
-      console.log('Handle Submit data', data);
       if (data.statusCode === 200 && email !== '' && password !== '') {
         //Check for response code before dispatch
         dispatch(
@@ -38,7 +38,7 @@ const Login = () => {
         );
         setErrMsg('');
         //Redirect to dashboard
-        navigate('/dashboard');
+        navigate('/merged-cruises');
       } else {
         setErrMsg('Incorrect email or password');
       }
@@ -58,9 +58,7 @@ const Login = () => {
                 <div className='col-lg-12'>
                   <div className='p-5'>
                     <div className='text-center'>
-                      <h3 className='text-light mb-4' style={{ color: 'rgb(255,255,255)' }}>
-                        Login
-                      </h3>
+                      <h3 className='text-light mb-4'>Login</h3>
                     </div>
                     <form className='user' onSubmit={(e) => handleSubmit(e)}>
                       <div className='mb-3'>
@@ -114,14 +112,14 @@ const Login = () => {
                       </button>
                     </form>
                     <div className='text-center'>
-                      <a className='small text-dashboardGreen' href='/forgot-password'>
+                      <Link className='small text-dashboardGreen' to='#'>
                         Forgot Password?
-                      </a>
+                      </Link>
                     </div>
                     <div className='text-center'>
-                      <a className='small text-dashboardGreen' href='/register'>
+                      <Link className='small text-dashboardGreen' to='/register'>
                         Create an Account!
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </div>

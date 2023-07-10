@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Register = () => {
   return (
@@ -70,14 +71,14 @@ const Register = () => {
                   </button>
                 </form>
                 <div className='text-center'>
-                  <a className='small' href='forgot-password.html' style={{ color: '#3aaf5c' }}>
+                  <Link className='small text-dashboardGreen' to='#'>
                     Forgot Password?
-                  </a>
+                  </Link>
                 </div>
                 <div className='text-center'>
-                  <a className='small' href='/login' style={{ color: '#3aaf5c' }}>
+                  <Link className='small text-dashboardGreen' to='/login'>
                     Already have an account? Login!
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>

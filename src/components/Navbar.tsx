@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { getWindowDimensions } from '@/helpers/util';
+import { useEffect, useState } from 'react';
 import useWindowDimensions from '@/hooks/useWindowDimentions';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   const { width } = useWindowDimensions();
@@ -17,9 +17,9 @@ const Navbar = () => {
   return (
     <nav className='navbar navbar-light navbar-expand-md fixed-top bg-black' id='mainNav'>
       <div className='container'>
-        <a className='navbar-brand' href='/'>
+        <Link className='navbar-brand' to='/'>
           Tide Pool
-        </a>
+        </Link>
         <button
           data-bs-toggle='collapse'
           className='navbar-toggler navbar-toggler-right'
@@ -35,38 +35,34 @@ const Navbar = () => {
         <div className={`${collapse && 'collapse'} navbar-collapse visible`} id='navbarResponsive'>
           <ul className='navbar-nav ms-auto'>
             <li className='nav-item nav-link mt-2'>
-              <a className='nav-link active' href='/home#header'>
+              <Link className='nav-link active' to='#'>
                 Home
-              </a>
+              </Link>
             </li>
             <li className='nav-item nav-link mt-2'>
-              <a className='nav-link' href='#about'>
+              <Link className='nav-link' to='#about'>
                 About
-              </a>
+              </Link>
             </li>
             <li className='nav-item nav-link mt-2'>
-              <a className='nav-link' href='#download'>
+              <Link className='nav-link' to='#download'>
                 Download
-              </a>
+              </Link>
             </li>
             <li className='nav-item nav-link mt-2'>
-              <a className='nav-link' href='#contact'>
+              <Link className='nav-link' to='#contact'>
                 Contact
-              </a>
+              </Link>
             </li>
             <li className='nav-item nav-link'>
-              {/*               
-              <a className='nav-link' href='/cruises'>
-                Survey Data
-              </a> */}
-              <a className='nav-link' href='/login'>
+              <Link className='nav-link' to='/login'>
                 <button
                   className='btn btn-primary btn-lg btn-default mx-1 text-sm border-0 bg-dashboardGreen text-white'
                   type='button'
                 >
                   Login
                 </button>
-              </a>
+              </Link>
             </li>
           </ul>
         </div>

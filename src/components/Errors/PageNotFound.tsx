@@ -10,9 +10,7 @@ const PageNotFound = () => {
       <div className='container-fluid bg-dashboardGrey h-screen overflow-auto'>
         <div className='text-center mt-5'>
           <div className='error mx-auto ' data-text={404}>
-            <p className='m-0 invisible' style={{ color: 'rgb(255,255,255)' }}>
-              404
-            </p>
+            <p className='m-0 invisible text-white'>404</p>
           </div>
           <div>
             <p className='text-light mt-5'>Page Not Found</p>

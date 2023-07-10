@@ -13,9 +13,8 @@ const DashboardNavbar = () => {
 
   return (
     <nav
-      className='navbar navbar-light navbar-expand shadow mb-4 topbar static-top'
+      className='navbar navbar-light navbar-expand shadow mb-4 topbar static-top bg-dashboardGrey'
       style={{
-        background: '#2c3a4a',
         boxShadow: '0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23) !important',
       }}
     >
@@ -34,11 +33,7 @@ const DashboardNavbar = () => {
               type='text'
               placeholder='Search for ...'
             />
-            <button
-              className='btn btn-primary py-0'
-              type='button'
-              style={{ background: '#3aaf5c' }}
-            >
+            <button className='btn btn-primary py-0 bg-dashboardGreen' type='button'>
               <i className='fas fa-search' />
             </button>
           </div>

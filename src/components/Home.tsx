@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import Navbar from './Navbar';
 
 const Home = () => {
@@ -49,14 +50,14 @@ const Home = () => {
                   augue fringilla sed. Morbi eget porttitor velit.
                 </p>
 
-                <a href='/login'>
+                <Link to='/login'>
                   <button
                     className='btn btn-primary btn-lg btn-default mx-3 my-4  border-0 text-sm bg-dashboardGreen'
                     type='button'
                   >
                     Launch App
                   </button>
-                </a>
+                </Link>
               </div>
             </div>
           </div>

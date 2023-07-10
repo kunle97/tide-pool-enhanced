@@ -1,5 +1,3 @@
-import React from 'react';
-
 const Sidebar = () => {
   return (
     <nav
@@ -30,8 +28,7 @@ const Sidebar = () => {
         <hr className='sidebar-divider my-0' />
         <ul className='navbar-nav text-light' id='accordionSidebar'>
           <li className='nav-item'>
-            <a className='nav-link active' href='/dashboard'>
-              <i className='fas fa-tachometer-alt' />
+            <a className='nav-link' href='#'>
               <span>Dashboard</span>
             </a>
           </li>
@@ -56,34 +53,7 @@ const Sidebar = () => {
               </a>
             </div>
           </li>
-          <li className='nav-item'>
-            <a className='nav-link' href='profile.html'>
-              <i className='fas fa-user' />
-              <span>Profile</span>
-            </a>
-          </li>
-          <li className='nav-item'>
-            <a className='nav-link' href='table.html'>
-              <i className='fas fa-table' />
-              <span>Table</span>
-            </a>
-          </li>
-          <li className='nav-item'>
-            <a className='nav-link' href='login.html'>
-              <i className='far fa-user-circle' />
-              <span>Login</span>
-            </a>
-          </li>
-          <li className='nav-item'>
-            <a className='nav-link' href='register.html'>
-              <i className='fas fa-user-circle' />
-              <span>Register</span>
-            </a>
-          </li>
         </ul>
-        <div className='text-center d-none d-md-inline'>
-          <button className='btn rounded-circle border-0' id='sidebarToggle' type='button' />
-        </div>
       </div>
     </nav>
   );
