@@ -50,16 +50,17 @@ const URLBuilder = () => {
   useEffect(() => {
     fetchCruises();
   }, []);
-  const handleCruiseChange = (e: any) => {
-    setCurrentCruise(cruises[e.target.value]);
+  const handleCruiseChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const cruiseIndex = Number(e.target.value);
+    setCurrentCruise(cruises[cruiseIndex]);
     setFinalURL('');
-    setMinLong(cruises[e.target.value].west);
-    setMaxLong(cruises[e.target.value].east);
-    setMinLat(cruises[e.target.value].south);
-    setMaxLat(cruises[e.target.value].north);
+    setMinLong(cruises[cruiseIndex].west);
+    setMaxLong(cruises[cruiseIndex].east);
+    setMinLat(cruises[cruiseIndex].south);
+    setMaxLat(cruises[cruiseIndex].north);
   };
 
-  const handleServiceChange = (e: any) => {
+  const handleServiceChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const currentService = e.target.value;
     setFinalURL('');
     setGMRTService(currentService);
@@ -98,7 +99,7 @@ const URLBuilder = () => {
     }
   };
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const urlData = {

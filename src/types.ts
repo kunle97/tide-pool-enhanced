@@ -11,3 +11,8 @@ export type Cruise = {
     center_x:string;
     center_y: string;
 };
+
+export type DataTableProps = {
+    url: string;
+    title: string;
+  };

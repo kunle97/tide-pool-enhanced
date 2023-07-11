@@ -56,7 +56,7 @@ I added a data table for the data to be displayed in to incorperate extra filter
 
 - Number of items to show dropdown - Control number of results on each page of the table
 - Pagination with Page Indicator - Navigate between pages of results
-- Searchbar - Allows you to search by entry ID and date created
+- Searchbar - Allows you to search by entry ID
 
 ### Dashboard Layout
 

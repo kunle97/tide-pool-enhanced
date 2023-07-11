@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import { makeid, calculateTotalArea, numberWithCommas } from '@/helpers/util';
 import { Link } from 'react-router-dom';
-import { Cruise } from '@/types';
+import { Cruise, DataTableProps } from '@/types';
 import { apiClient } from '@/api/apiClient';
 
-const DataTable = (props: any) => {
+const DataTable = (props: DataTableProps) => {
   let [cruises, setCruises] = useState<Cruise[]>([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [sortOrder, setSortOrder] = useState('desc');
@@ -44,15 +44,13 @@ const DataTable = (props: any) => {
     setCurrentPage(pageNumber);
   };
 
-  const handleResultsPerPageChange = (event: any) => {
+  const handleResultsPerPageChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setCurrentPage(1);
-    setItemsPerPage(event.target.value);
+    setItemsPerPage(Number(event.target.value));
   };
 
   const filteredData = cruises.filter(
-    (item) =>
-      (item.entry_id !== null && item.entry_id.toString().includes(searchTerm)) ||
-      (item.created !== null && item.created.includes(searchTerm)),
+    (item) => item.entry_id !== null && item.entry_id.toString().includes(searchTerm),
   );
 
   const sortedData = filteredData.sort((a, b) => {
@@ -145,7 +143,7 @@ const DataTable = (props: any) => {
                   </tr>
                 </thead>
                 <tbody>
-                  {currentItems.map((item: any) => (
+                  {currentItems.map((item: Cruise) => (
                     <>
                       <tr key={item.entry_id + '_' + makeid(10)} className='hover:bg-gray-100'>
                         <td className='py-2 px-4 text-center'>
@@ -159,10 +157,10 @@ const DataTable = (props: any) => {
                         <td className='py-2 px-4 text-center text-white'>
                           {item.center_x &&
                             item.center_y &&
-                            item.center_x >= -180 &&
-                            item.center_x <= 180 &&
-                            item.center_y >= -90 &&
-                            item.center_y <= 90 && (
+                            Number(item.center_x) >= -180 &&
+                            Number(item.center_x) <= 180 &&
+                            Number(item.center_y) >= -90 &&
+                            Number(item.center_y) <= 90 && (
                               <Link
                                 to={`/map-viewer/${item.center_y}/${item.center_x}/${item.entry_id}`}
                                 className='text-dashboardGreen'
