@@ -50,7 +50,7 @@ The dev server will launch in your browser at [localhost:4444](localhost:4444) a
 
 ## Extra Features
 
-##### Data Table
+### Data Table
 
 I added a data table for the data to be displayed in to incorperate extra filtering features in addition to sorting the list by name. The filtration features include:
 
@@ -58,22 +58,22 @@ I added a data table for the data to be displayed in to incorperate extra filter
 - Pagination with Page Indicator - Navigate between pages of results
 - Searchbar - Allows you to search by entry ID and date created
 
-##### Dashboard Layout
+### Dashboard Layout
 
 I added the dashboard layout as it serves as a simple and modern yet professional approach to a front end.
 
-##### Login Flow
+### Login Flow
 
 I added a the mock service worker (with the help of React Redux) to the app so that I can simulate a login flow from a fake REST API. Good for when the app expands to an enterprise level with more users and wants to introduce security to it easily.
 
-##### apiClient
+### apiClient
 
 Added an apiClient to simplify calls to REST APIs. Good for when the app scales to use several API calls throughout the app as the the app itself and APIs get more complex.
 
-##### URL Builder
+### URL Builder
 
 The URL Builder is a all in one UI integration of the GMRT [GridServer Web Service URL Builder API](https://www.gmrt.org/services/gridserverinfo.php#!/services/getGMRTGrid). I implemented this to show the possibilities of the benefits of having a dashboard layout as the application becomes more complex.
 
-##### Map Viewer
+### Map Viewer
 
 I added the Map viewer componenet to allow for users to visually see where each ship was when it was surveying. This is useful because it gives the user even more information about the exact location of when the cruise was.
