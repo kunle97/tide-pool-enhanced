@@ -1,5 +1,5 @@
 import { Map, Marker } from 'react-map-gl';
-import DashboardContainer from './DashboardContainer';
+import DashboardContainer from './Navigation/DashboardContainer';
 import { useParams, useNavigate } from 'react-router';
 import pin from '../../assets/pin.png';
 

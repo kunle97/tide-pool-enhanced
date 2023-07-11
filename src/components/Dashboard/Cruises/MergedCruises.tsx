@@ -1,6 +1,6 @@
 import { MERGED_CRUISES_API_URL } from '@/constants';
 import DataTable from './DataTable';
-import DashboardContainer from '../DashboardContainer';
+import DashboardContainer from '../Navigation/DashboardContainer';
 
 const MergedCruises = () => {
   return (

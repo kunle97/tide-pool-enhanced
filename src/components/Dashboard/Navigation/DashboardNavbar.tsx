@@ -34,7 +34,7 @@ const DashboardNavbar = () => {
               type='text'
               placeholder='Search for ...'
             />
-            <button className='btn btn-primary py-0 bg-dashboardGreen' type='button'>
+            <button className='btn btn-primary py-0 bg-dashboardGreen border-none' type='button'>
               <i className='fas fa-search' />
             </button>
           </div>
@@ -92,7 +92,7 @@ const DashboardNavbar = () => {
                   <button
                     type='button'
                     onClick={(e) => handleLogout(e)}
-                    className='btn text-sm normal-case'
+                    className='btn text-sm normal-case w-full px-0'
                   >
                     Logout
                   </button>

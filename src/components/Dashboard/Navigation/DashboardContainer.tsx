@@ -1,5 +1,5 @@
-import Sidebar from './Navigation/Sidebar';
-import DashboardNavbar from './Navigation/DashboardNavbar';
+import Sidebar from './Sidebar';
+import DashboardNavbar from './DashboardNavbar';
 import Footer from './Footer';
 const DashboardContainer = ({ children }: any) => {
   return (

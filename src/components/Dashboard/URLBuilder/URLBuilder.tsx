@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import DashboardContainer from '../DashboardContainer';
+import DashboardContainer from '../Navigation/DashboardContainer';
 import {
   ATTRIBUTION_GRID_SERVER_URL,
   GRID_SERVER_URL,
