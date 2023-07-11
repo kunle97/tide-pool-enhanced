@@ -1,7 +1,6 @@
 import Sidebar from './Navigation/Sidebar';
 import DashboardNavbar from './Navigation/DashboardNavbar';
 import Footer from './Footer';
-
 const DashboardContainer = ({ children }: any) => {
   return (
     <div id='wrapper'>

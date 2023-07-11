@@ -76,4 +76,4 @@ The URL Builder is a all in one UI integration of the GMRT [GridServer Web Servi
 
 ### Map Viewer
 
-I added the Map viewer componenet to allow for users to visually see where each ship was when it was surveying. This is useful because it gives the user even more information about the exact location of when the cruise was.
+I added the Map viewer componenet to allow for users to visually see where each ship was when it was surveying.
