@@ -9,7 +9,7 @@ const DashboardNavbar = () => {
 
   const handleLogout = (e: React.MouseEvent<HTMLButtonElement>) => {
     dispatch(logout());
-    navigate('/login');
+    navigate('/');
   };
 
   return (
