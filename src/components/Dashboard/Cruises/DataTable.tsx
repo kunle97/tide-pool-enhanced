@@ -3,6 +3,7 @@ import { makeid, calculateTotalArea, numberWithCommas } from '@/helpers/util';
 import { Link } from 'react-router-dom';
 import { Cruise } from '@/types';
 import { apiClient } from '@/api/apiClient';
+import MapViewer from '../MapViewer';
 
 const DataTable = (props: any) => {
   let [cruises, setCruises] = useState<Cruise[]>([]);
@@ -61,6 +62,7 @@ const DataTable = (props: any) => {
     } else if (sortOrder === 'desc') {
       return new Date(b.created) - new Date(a.created);
     }
+    setTotalArea(calculateTotalArea(currentItems).toString());
     return 0;
   });
 
@@ -114,9 +116,6 @@ const DataTable = (props: any) => {
                     </select>
                   </label>
                 </div>
-                <p className='m-0 text-white'>
-                  Page {currentPage} of {totalPages}
-                </p>
               </div>
               <div className='col-md-6'>
                 <div className='text-md-end dataTables_filter' id='dataTable_filter'>
@@ -125,7 +124,7 @@ const DataTable = (props: any) => {
                       type='search'
                       className='form-control form-control-sm'
                       aria-controls='dataTable'
-                      placeholder='Search (Filter)'
+                      placeholder='Search'
                       value={searchTerm}
                       onChange={handleSearch}
                     />
@@ -148,20 +147,38 @@ const DataTable = (props: any) => {
                       Created <span className='text-xs'>{sortOrder === 'asc' ? '▲' : '▼'}</span>
                     </th>
                     <th className='py-2 px-4'>Total Area</th>
+                    <th className='py-2 px-4'></th>
                   </tr>
                 </thead>
                 <tbody>
                   {currentItems.map((item: any) => (
-                    <tr key={item.entry_id + '_' + makeid(10)} className='hover:bg-gray-100'>
-                      <td className='py-2 px-4 text-center'>
-                        <Link className='text-uiGreen' target='_blank' to={item.url}>
-                          {item.entry_id}
-                        </Link>
-                      </td>
-                      <td className='py-2 px-4 text-center text-white'>{item.chief}</td>
-                      <td className='py-2 px-4 text-center text-white'>{item.created}</td>
-                      <td className='py-2 px-4 text-center text-white'>{item.total_area}</td>
-                    </tr>
+                    <>
+                      <tr key={item.entry_id + '_' + makeid(10)} className='hover:bg-gray-100'>
+                        <td className='py-2 px-4 text-center'>
+                          <Link className='text-uiGreen' target='_blank' to={item.url}>
+                            {item.entry_id}
+                          </Link>
+                        </td>
+                        <td className='py-2 px-4 text-center text-white'>{item.chief}</td>
+                        <td className='py-2 px-4 text-center text-white'>{item.created}</td>
+                        <td className='py-2 px-4 text-center text-white'>{item.total_area}</td>
+                        <td className='py-2 px-4 text-center text-white'>
+                          {item.center_x &&
+                            item.center_y &&
+                            item.center_x >= -180 &&
+                            item.center_x <= 180 &&
+                            item.center_y >= -90 &&
+                            item.center_y <= 90 && (
+                              <Link
+                                to={`/map-viewer/${item.center_y}/${item.center_x}/${item.entry_id}`}
+                                className='text-dashboardGreen'
+                              >
+                                View On Map
+                              </Link>
+                            )}
+                        </td>
+                      </tr>
+                    </>
                   ))}
                 </tbody>
                 <tfoot>
@@ -177,6 +194,9 @@ const DataTable = (props: any) => {
               </table>
             </div>
             {/* Pagination */}
+            <p className='m-0 text-white'>
+              Page {currentPage} of {totalPages}
+            </p>
             <div className='flex my-3 '>
               <div className='flex-1'>
                 <button

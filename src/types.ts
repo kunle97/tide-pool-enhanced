@@ -4,4 +4,10 @@ export type Cruise = {
     created: string;
     total_area: string;
     url: string;
+    west: string;
+    east: string;
+    north: string;
+    south: string;
+    center_x:string;
+    center_y: string;
 };

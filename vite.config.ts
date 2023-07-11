@@ -15,4 +15,7 @@ export default defineConfig({
     port: 4444,
     open: true,
   },
+  define: {
+    'process.env': process.env
+  }
 });

@@ -2,6 +2,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { logout } from '@/features/userSlice';
 import { useNavigate } from 'react-router';
+import avatar from '../../../assets/avatar1.jpeg';
 const DashboardNavbar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -78,10 +79,7 @@ const DashboardNavbar = () => {
                 href='#'
               >
                 <span className='d-none d-lg-inline me-2 text-gray-600 small'>Jane Doe</span>
-                <img
-                  className='border rounded-circle img-profile'
-                  src='dashboard-assets/img/avatars/avatar1.jpeg'
-                />
+                <img className='border rounded-circle img-profile' src={avatar} />
               </a>
               <div className='dropdown-menu shadow dropdown-menu-end animated--grow-in'>
                 <a className='dropdown-item' href='#'>

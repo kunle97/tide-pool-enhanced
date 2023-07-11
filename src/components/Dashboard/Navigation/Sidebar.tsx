@@ -1,3 +1,5 @@
+import { Link, NavLink } from 'react-router-dom';
+
 const Sidebar = () => {
   return (
     <nav
@@ -27,11 +29,6 @@ const Sidebar = () => {
         </a>
         <hr className='sidebar-divider my-0' />
         <ul className='navbar-nav text-light' id='accordionSidebar'>
-          <li className='nav-item'>
-            <a className='nav-link' href='#'>
-              <span>Dashboard</span>
-            </a>
-          </li>
           <li className='nav-item dropdown'>
             <a
               className='dropdown-toggle nav-link'
@@ -39,7 +36,7 @@ const Sidebar = () => {
               data-bs-toggle='dropdown'
               href='#'
             >
-              Cruises
+              Research Ship Data
             </a>
             <div className='dropdown-menu'>
               <a className='dropdown-item' href='/merged-cruises'>
@@ -52,6 +49,11 @@ const Sidebar = () => {
                 Under Review
               </a>
             </div>
+          </li>
+          <li className='nav-item'>
+            <Link className='nav-link' to='/url-builder'>
+              URL Builder
+            </Link>
           </li>
         </ul>
       </div>

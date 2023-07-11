@@ -16,6 +16,8 @@ import RequireAuth from './api/auth/RequireAuth';
 import PageNotFound from './components/Errors/PageNotFound';
 import { PersistGate } from 'redux-persist/integration/react';
 import persistStore from 'redux-persist/es/persistStore';
+import URLBuilder from './components/Dashboard/URLBuilder/URLBuilder';
+import MapViewer from './components/Dashboard/MapViewer';
 
 let persistor = persistStore(store);
 
@@ -41,6 +43,8 @@ const PersistenceApp = () => {
                 <Route path='/merged-cruises' element={<MergedCruises />} />
                 <Route path='/rejected-cruises' element={<RejectedCruises />} />
                 <Route path='/under-review-cruises' element={<UnderReviewCruises />} />
+                <Route path='/url-builder' element={<URLBuilder />} />
+                <Route path='/map-viewer/:lat/:long/:entry_id' element={<MapViewer />} />
               </Route>
             </Routes>
           </BrowserRouter>
@@ -49,6 +53,7 @@ const PersistenceApp = () => {
     </Provider>
   );
 };
+
 const ReduxApp = () => {
   return (
     <Provider store={store}>
@@ -63,6 +68,8 @@ const ReduxApp = () => {
             <Route path='/merged-cruises' element={<MergedCruises />} />
             <Route path='/rejected-cruises' element={<RejectedCruises />} />
             <Route path='/under-review-cruises' element={<UnderReviewCruises />} />
+            <Route path='/url-builder' element={<URLBuilder />} />
+            <Route path='/map-viewer/:lat/:long/:entry_id' element={<MapViewer />} />
           </Routes>
         </BrowserRouter>
       </MainContext.Provider>
