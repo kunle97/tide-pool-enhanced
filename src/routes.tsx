@@ -4,7 +4,6 @@ import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import { store } from '@/app/store';
 import '@/index.css';
 import Home from './components/Home';
-import Dashboard from './components/Dashboard/Dashboard';
 import MergedCruises from './components/Dashboard/Cruises/MergedCruises';
 import RejectedCruises from './components/Dashboard/Cruises/RejectedCruises';
 import UnderReviewCruises from './components/Dashboard/Cruises/UnderReviewCruises';
@@ -38,7 +37,6 @@ const PersistenceApp = () => {
               <Route path='/login' element={<Login />} />
               <Route path='/register' element={<Register />} />
               <Route element={<RequireAuth />}>
-                <Route path='/dashboard' element={<Dashboard />} />
                 <Route path='/merged-cruises' element={<MergedCruises />} />
                 <Route path='/rejected-cruises' element={<RejectedCruises />} />
                 <Route path='/under-review-cruises' element={<UnderReviewCruises />} />
@@ -63,7 +61,6 @@ const ReduxApp = () => {
             <Route path='/' element={<Home />} />
             <Route path='/login' element={<Login />} />
             <Route path='/register' element={<Register />} />
-            <Route path='/dashboard' element={<Dashboard />} />
             <Route path='/merged-cruises' element={<MergedCruises />} />
             <Route path='/rejected-cruises' element={<RejectedCruises />} />
             <Route path='/under-review-cruises' element={<UnderReviewCruises />} />

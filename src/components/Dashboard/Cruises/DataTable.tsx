@@ -132,12 +132,7 @@ const DataTable = (props: any) => {
                 </div>
               </div>
             </div>
-            <div
-              className='table-responsive table mt-2'
-              id='dataTable'
-              role='grid'
-              aria-describedby='dataTable_info'
-            >
+            <div className='table-responsive table mt-2' id='dataTable'>
               <table className='table my-0' id='dataTable'>
                 <thead>
                   <tr className='text-white'>

@@ -9,7 +9,7 @@ const Sidebar = () => {
       <div className='container-fluid d-flex flex-column p-0'>
         <a
           className='navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0'
-          href='/dashboard'
+          href='/merged-cruises'
         >
           <div className='sidebar-brand-icon rotate-n-15'>
             <svg

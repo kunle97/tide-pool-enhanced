@@ -18,12 +18,6 @@ const reducer = combineReducers({
 
 const persistedReducer = persistReducer(persistConfig, reducer);
 
-// export const store = configureStore<UserState>({
-//   reducer: {
-//     user: userSlice.reducer
-//   },
-// });
-
 export const store = configureStore<any>({
   reducer: persistedReducer,
 });

@@ -78,7 +78,7 @@ const DashboardNavbar = () => {
                 data-bs-toggle='dropdown'
                 href='#'
               >
-                <span className='d-none d-lg-inline me-2 text-gray-600 small'>Jane Doe</span>
+                <span className='d-none d-lg-inline me-2 text-white small'>Jane Doe</span>
                 <img className='border rounded-circle img-profile' src={avatar} />
               </a>
               <div className='dropdown-menu shadow dropdown-menu-end animated--grow-in'>
