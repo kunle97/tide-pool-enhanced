@@ -35,24 +35,24 @@ const Navbar = () => {
         <div className={`${collapse && 'collapse'} navbar-collapse visible`} id='navbarResponsive'>
           <ul className='navbar-nav ms-auto'>
             <li className='nav-item nav-link mt-2'>
-              <Link className='nav-link active' to='#'>
+              <a className='nav-link active' href='#'>
                 Home
-              </Link>
+              </a>
             </li>
             <li className='nav-item nav-link mt-2'>
-              <Link className='nav-link' to='#about'>
+              <a className='nav-link' href='#about'>
                 About
-              </Link>
+              </a>
             </li>
             <li className='nav-item nav-link mt-2'>
-              <Link className='nav-link' to='#download'>
+              <a className='nav-link' href='#download'>
                 Download
-              </Link>
+              </a>
             </li>
             <li className='nav-item nav-link mt-2'>
-              <Link className='nav-link' to='#contact'>
+              <a className='nav-link' href='#contact'>
                 Contact
-              </Link>
+              </a>
             </li>
             <li className='nav-item nav-link'>
               <Link className='nav-link' to='/login'>

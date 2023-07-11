@@ -39,13 +39,13 @@ const Sidebar = () => {
               Research Ship Data
             </a>
             <div className='dropdown-menu'>
-              <a className='dropdown-item' href='/merged-cruises'>
+              <a className='dropdown-item active:bg-dashboardGreen' href='/merged-cruises'>
                 Merged
               </a>
-              <a className='dropdown-item' href='/rejected-cruises'>
+              <a className='dropdown-item active:bg-dashboardGreen' href='/rejected-cruises'>
                 Rejected
               </a>
-              <a className='dropdown-item' href='/under-review-cruises'>
+              <a className='dropdown-item active:bg-dashboardGreen' href='/under-review-cruises'>
                 Under Review
               </a>
             </div>

@@ -82,12 +82,12 @@ const DashboardNavbar = () => {
                 <img className='border rounded-circle img-profile' src={avatar} />
               </a>
               <div className='dropdown-menu shadow dropdown-menu-end animated--grow-in'>
-                <a className='dropdown-item' href='#'>
+                <a className='dropdown-item active:bg-dashboardGreen' href='#'>
                   <i className='fas fa-user fa-sm fa-fw me-2 text-gray-400' />
                   &nbsp;Account Settings
                 </a>
                 <div className='dropdown-divider' />
-                <a className='dropdown-item' href='#'>
+                <a className='dropdown-item active:bg-dashboardGreen' href='#'>
                   <i className='fas fa-sign-out-alt fa-sm fa-fw me-2 text-gray-400' />
                   <button
                     type='button'
