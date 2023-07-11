@@ -3,7 +3,6 @@ import { makeid, calculateTotalArea, numberWithCommas } from '@/helpers/util';
 import { Link } from 'react-router-dom';
 import { Cruise } from '@/types';
 import { apiClient } from '@/api/apiClient';
-import MapViewer from '../MapViewer';
 
 const DataTable = (props: any) => {
   let [cruises, setCruises] = useState<Cruise[]>([]);

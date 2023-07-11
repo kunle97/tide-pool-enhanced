@@ -1,8 +1,8 @@
 import { Map, Marker } from 'react-map-gl';
 import DashboardContainer from './DashboardContainer';
-import { useParams } from 'react-router';
+import { useParams, useNavigate } from 'react-router';
 import pin from '../../assets/pin.png';
-import { useNavigate } from 'react-router';
+
 const MapViewer = () => {
   const { lat, long, entry_id } = useParams();
   const navigate = useNavigate();
