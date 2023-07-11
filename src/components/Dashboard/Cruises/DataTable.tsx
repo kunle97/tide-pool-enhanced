@@ -121,7 +121,7 @@ const DataTable = (props: DataTableProps) => {
                       type='search'
                       className='form-control form-control-sm'
                       aria-controls='dataTable'
-                      placeholder='Search'
+                      placeholder='Filter by Entry ID'
                       value={searchTerm}
                       onChange={handleSearch}
                     />
