@@ -1,14 +1,14 @@
 import { Cruise } from "@/types";
 
-
 export const calculateTotalArea = (cruises:Cruise[]) => {// Returns the sum of the total areas of each cruise 
-    let areaSum = 0;
-    cruises.forEach((item) => {
-      if(item.total_area !== null && !isNaN(Number(item.total_area)))
-        areaSum += Number(item.total_area);
-    });
-    return areaSum;
-  };
+  let areaSum = 0;
+  cruises.forEach((item) => {
+    if(item.total_area !== null && !isNaN(Number(item.total_area)))
+      areaSum += Number(item.total_area);
+  });
+  return areaSum;
+};
+
 export function numberWithCommas(x:number) { //Adds commas to large numbers
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }

@@ -10,12 +10,14 @@ const DataTable = (props: DataTableProps) => {
   const [sortOrder, setSortOrder] = useState('desc');
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(10);
+  const [isLoading, setIsLoading] = useState(true);
 
   async function fetchCruises() {
     // Retrieve cruise data from GMRT API using the apiClient
     try {
       const data = await apiClient(props.url, { method: 'GET' });
       setCruises(data);
+      setIsLoading(false);
     } catch (error) {
       console.error(error);
     }
@@ -143,35 +145,43 @@ const DataTable = (props: DataTableProps) => {
                   </tr>
                 </thead>
                 <tbody>
-                  {currentItems.map((item: Cruise) => (
-                    <>
-                      <tr key={item.entry_id + '_' + makeid(10)} className='hover:bg-gray-100'>
-                        <td className='py-2 px-4 text-center'>
-                          <Link className='text-uiGreen' target='_blank' to={item.url}>
-                            {item.entry_id}
-                          </Link>
-                        </td>
-                        <td className='py-2 px-4 text-center text-white'>{item.chief}</td>
-                        <td className='py-2 px-4 text-center text-white'>{item.created}</td>
-                        <td className='py-2 px-4 text-center text-white'>{item.total_area}</td>
-                        <td className='py-2 px-4 text-center text-white'>
-                          {item.center_x &&
-                            item.center_y &&
-                            Number(item.center_x) >= -180 &&
-                            Number(item.center_x) <= 180 &&
-                            Number(item.center_y) >= -90 &&
-                            Number(item.center_y) <= 90 && (
-                              <Link
-                                to={`/map-viewer/${item.center_y}/${item.center_x}/${item.entry_id}`}
-                                className='text-dashboardGreen'
-                              >
-                                View On Map
-                              </Link>
-                            )}
-                        </td>
-                      </tr>
-                    </>
-                  ))}
+                  {isLoading ? (
+                    <tr>
+                      <td colSpan={5}>
+                        <p className='w-full p-10 text-dashboardGreen text-center'>Loading...</p>
+                      </td>
+                    </tr>
+                  ) : (
+                    currentItems.map((item: Cruise) => (
+                      <>
+                        <tr key={item.entry_id + '_' + makeid(10)} className='hover:bg-gray-100'>
+                          <td className='py-2 px-4 text-center'>
+                            <Link className='text-uiGreen' target='_blank' to={item.url}>
+                              {item.entry_id}
+                            </Link>
+                          </td>
+                          <td className='py-2 px-4 text-center text-white'>{item.chief}</td>
+                          <td className='py-2 px-4 text-center text-white'>{item.created}</td>
+                          <td className='py-2 px-4 text-center text-white'>{item.total_area}</td>
+                          <td className='py-2 px-4 text-center text-white'>
+                            {item.center_x &&
+                              item.center_y &&
+                              Number(item.center_x) >= -180 &&
+                              Number(item.center_x) <= 180 &&
+                              Number(item.center_y) >= -90 &&
+                              Number(item.center_y) <= 90 && (
+                                <Link
+                                  to={`/map-viewer/${item.center_y}/${item.center_x}/${item.entry_id}`}
+                                  className='text-dashboardGreen'
+                                >
+                                  View On Map
+                                </Link>
+                              )}
+                          </td>
+                        </tr>
+                      </>
+                    ))
+                  )}
                 </tbody>
                 <tfoot>
                   <tr className='text-white'>

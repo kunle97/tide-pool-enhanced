@@ -26,12 +26,13 @@ const URLBuilder = () => {
   let [cruises, setCruises] = useState<Cruise[]>([]);
   const [currentCruise, setCurrentCruise] = useState<Cruise>();
   const [currentForm, setCurrentForm] = useState(<GridServerForm />);
-
+  const [isLoading, setIsLoading] = useState(true);
   async function fetchCruises() {
     // Retrieve cruise data from GMRT API using the apiClient
     try {
       const data = await apiClient(MERGED_CRUISES_API_URL, { method: 'GET' });
       setCruises(data);
+      setIsLoading(false);
     } catch (error) {
       console.error(error);
     }
@@ -72,12 +73,20 @@ const URLBuilder = () => {
             )
           </label>
           <select onChange={handleCruiseChange} className='form-select'>
-            <option value='' selected disabled>
-              Select One
-            </option>
-            {cruises.map((item, index) => {
-              return <option value={index}>{item.entry_id}</option>;
-            })}
+            {isLoading ? (
+              <option value='' selected disabled>
+                Loading ships...
+              </option>
+            ) : (
+              <>
+                <option value='' selected disabled>
+                  Select One
+                </option>
+                {cruises.map((item, index) => {
+                  return <option value={index}>{item.entry_id}</option>;
+                })}
+              </>
+            )}
           </select>
         </div>
 
