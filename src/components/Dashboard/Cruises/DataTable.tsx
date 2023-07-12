@@ -92,7 +92,7 @@ const DataTable = (props: DataTableProps) => {
           <div className='card-header py-3'>
             <p className='text-primary m-0 fw-bold text-white'></p>
           </div>
-          <div className='card-body'>
+          <div className='card-body overflow-x-auto'>
             <div className='row'>
               <div className='col-md-6 text-nowrap'>
                 <div id='dataTable_length' className='dataTables_length' aria-controls='dataTable'>

@@ -39,15 +39,13 @@ const Home = () => {
             <div className='row'>
               <div className='col-lg-8 mx-auto'>
                 <h2>About</h2>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lobortis orci
-                  blandit nisl vestibulum, ut ultricies massa pulvinar. Curabitur auctor quam nibh,
-                  a euismod lacus tincidunt ut. Aliquam ac urna neque. Donec pellentesque vel ex ac
-                  pharetra. Sed porta dolor ut velit rutrum vestibulum. Cras molestie lorem nec ante
-                  ullamcorper lobortis. Nullam accumsan urna a metus ornare lacinia. Suspendisse
-                  potenti. Morbi scelerisque, eros eget sagittis tempus, turpis arcu elementum mi,
-                  eu tristique metus justo ac velit. Mauris pellentesque ante sapien, egestas semper
-                  augue fringilla sed. Morbi eget porttitor velit.
+                <p className='my-4'>
+                  Tide Pool pulls data from the GMTR API to display Cruise data in a readable and
+                  user-frindly format. It features a map that also allows you to view the where
+                  abouts of each cruise while it was or currently is in service. In addition to that
+                  Tide Pool also has the ability to make use of the GMTR REST-type servicess to
+                  return grided data from the GMRT Syntheseis and output a veriety of formats such
+                  as GMT3 NetCDF, COARDS compliant NetCDF, ESRI ASCII , and GeoTIFF.
                 </p>
 
                 <Link to='/login'>
