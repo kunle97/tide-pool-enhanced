@@ -25,7 +25,7 @@ const DashboardNavbar = () => {
           id='sidebarToggleTop'
           type='button'
         >
-          <i className='fas fa-bars' />
+          <i className='fas fa-bars text-dashboardGreen' />
         </button>
         <form className='d-none d-sm-inline-block me-auto ms-md-3 my-2 my-md-0 mw-100 navbar-search'>
           <div className='input-group'>

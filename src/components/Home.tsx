@@ -11,11 +11,11 @@ const Home = () => {
             <div className='col-12 col-md-10 col-lg-8 d-flex justify-content-center flex-column'>
               <h1 className='brand-heading'>Tide Pool</h1>
               <p className='intro-text my-3'>
-                Providing the most accurate research ship sonar and survey data since 2002. Learn
-                more about our new and improve survey tool.
+                Providing the most accurate research ship sonar and survey data since 2023. Learn
+                more about our new and improve survey finder tool.
               </p>
               <a
-                className='btn btn-link btn-circle mx-auto '
+                className='btn btn-link btn-circle mx-auto no-underline'
                 role='button'
                 href='#about'
                 title='To about section'
