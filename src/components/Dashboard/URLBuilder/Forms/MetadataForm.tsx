@@ -1,4 +1,3 @@
-import React from 'react';
 import { useState } from 'react';
 import { METADATA_GRID_SERVER_URL } from '@/constants';
 import { Link } from 'react-router-dom';

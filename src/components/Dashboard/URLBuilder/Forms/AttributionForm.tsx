@@ -1,8 +1,5 @@
-import { useEffect, useState } from 'react';
-import DashboardContainer from '../../Navigation/DashboardContainer';
+import {  useState } from 'react';
 import { ATTRIBUTION_GRID_SERVER_URL } from '@/constants';
-import { MERGED_CRUISES_API_URL } from '@/constants';
-import { Cruise } from '@/types';
 import { Link } from 'react-router-dom';
 
 const AttributionForm = (props: any) => {
